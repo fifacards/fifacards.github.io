@@ -1,24 +1,14 @@
-window.onload= function(){
+const nav=document.getElementById('nav');
+const tog=document.getElementById('toggle');
+tog.ondblclick=()=>{
+    tog.classList.toggle('active');
+    nav.classList.toggle('active');
+}
 
-    alert("✅Just Select The Program  \n✅and The OVR  \n✅Click on 👉🏻 MAKE CARD 👈🏻\nget the Card Animation \n\nSwitch to Dark Mode🌚 to Protect Eyes 😄");
-    const switcher=document.getElementById('switcher');
-    const body= document.body;
-
-    switcher.onclick = ()=>{
-        body.classList.toggle('dark');
-        if(body.classList.contains('dark')){
-            switcher.innerHTML="Switch to Light Mode";
-        }
-        else{
-            switcher.innerHTML="Switch to Dark Mode";
-        }
-    }
-
-    var cxzw=document.getElementsByTagName("img");
+var cxzw=document.getElementsByTagName("img");
     var jds=0,counter=0;
     var g=setInterval(func,50);
     var mc = document.getElementById('mCard');
-    var rc = document.getElementById('rCard');
     var lder=document.getElementById('lder');
     
     var urll=`https://cdn-p2.frzdb.net/fifamobile/images/sprites_21/conv_playeranim_TT_LEGEND_1.png`;
@@ -47,5 +37,4 @@ window.onload= function(){
     cxzw[0].addEventListener('load',()=>{
         lder.style.cssText='display:none';
         cxzw[0].style.cssText='display:block';
-    })
-};
+    });
