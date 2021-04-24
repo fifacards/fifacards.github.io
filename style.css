@@ -1,18 +1,6 @@
 :root{
-    --green1:#feffde;
-    --green2:#ddffbc;
-    --green3:#91c788;
-    --green4:#52734d;
+    --linear: linear-gradient(orange,red,blue);
 }
-
-.light{
-    --backg:var(--green1);
-    --form-bg:var(--green3);
-    --inp-bg:var(--green2);
-    --head-bg:var(--green4);
-    --text:var(--green4);
-}
-
 .dark{
     --backg:#000;
     --form-bg:rgb(1, 8, 34);
@@ -25,32 +13,68 @@
     margin: 0;
     padding: 0;
 }
-@font-face {
-  font-family: 'brizzler';
-  font-style: normal;
-  font-weight: 400;
-  src: url(https://fonts.gstatic.com/l/font?kit=oPWL_kZkkPk4T8lpg1O2jdrJVDUnJxn7oTmnfIe-0A&skey=35b5d309b586815a&v=v1) format('woff2');
-}
-@font-face{
-    src: url('DINPro-CondBold.woff');
-    font-family: 'knul';
-}
 body{
-    transition: background 0.5s ease-in-out,color 1s ease-in-out;
-    background: var(--backg);
+    width: 100%;
     height: 100vh;
+    background: var(--backg);
     display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
+    justify-content: center;
     align-items: center;
 }
-/**************** Form Section ******************************/
+.navigation{
+    width: 50px;
+    height: 50px;
+    background: #fff;
+    border-radius: 4px;
+    position: relative;
+    transition: 0.5s;
+    z-index: 1000;
+    overflow: hidden;
+    cursor: pointer;
+}
+.navigation.active{
+    width: 250px;
+    height: 350px;
+}
+.toggle{
+    position: relative;
+    background: #982081;
+    width: 100%;
+    height: 50px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    transition: 0.5s;
+}
+.toggle::before{
+    content: '+';
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    font-size: 40px;
+    font-weight: 900;
+    color: snow;
+    transition: 0.7s;
+}
+.toggle.active{
+    background: teal;
+}
+.toggle.active::before{
+    transform: rotate(675deg);
+    transition: 0.7s;
+}
+
+
+
 .form{
     background: var(--form-bg);
-    padding: 20px;
+    padding:  25px 25px 40px 25px;
     display: flex;
     flex-direction: column;
-    border-radius: 20px;
+    border-radius: 0px;
     animation: name duration timing-function delay iteration-count direction fill-mode;
 }
 #head-title{
@@ -63,7 +87,7 @@ body{
     font-family: 'knul';
     box-shadow: 0 0 10px 0px rgba(9, 61, 129, 0.664);
     transition: 0.5s;
-    color: antiquewhite;
+    color: whitesmoke;
 }
 #player-name{
     color: red;
@@ -73,8 +97,8 @@ body{
     margin-bottom: 10px;
 }
 #head-title:hover{
-    color: palegoldenrod;
     box-shadow: 0 0 50px 0px rgba(9, 61, 129, 0.664);
+    color: violet;
     transition: 0.5s;
 }
 input,select{
@@ -90,7 +114,7 @@ input,select{
     transition: 0.5s;
     text-transform: uppercase;
 }
-input:focus{
+input:active{
     border: 2px solid rgb(12, 209, 5);
     transition: 0.5s;
 }
@@ -105,7 +129,7 @@ input[type="reset"]{
     padding: none;
     border: 0px solid orangered;
     box-shadow: 3px 3px 0px 0px orangered;
-    margin: 5px auto 0px auto;
+    margin: 10px auto 10px auto;
 }
 input[type="button"]:hover,input[type="reset"]:hover{
     box-shadow: 0 0 30px orangered;
@@ -120,9 +144,10 @@ input[type="button"]:active,input[type="reset"]:active{
     transition: all 0.5s;
 }
 
+
 /**************** Container Section ******************************/
 #container{
-    transform: translateY(0%);
+    transform: translateY(10%);
     z-index: -1;
     width: 256px;
     height: 256px;
@@ -159,10 +184,28 @@ input[type="button"]:active,input[type="reset"]:active{
     }
 }
 #switcher{
+    position: absolute;
+    top: 0;
     padding: 10px 5px;
     background: var(--head-bg);
     border: none;
     outline: none;
     box-shadow: 3px 3px 0px #03e4ff;
     font-size: 18px;
+}
+
+
+#setter{
+    margin-top: 40px;
+    font-size: 30px;
+    color: whitesmoke;
+    letter-spacing: 1px;
+    font-family: 'brizzler';
+    text-align: center;
+    text-transform: uppercase;
+}
+@media screen and (max-width:480px){
+    body{
+        flex-direction: column;
+    }
 }
